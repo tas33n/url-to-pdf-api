@@ -123,6 +123,14 @@ async function render(_opts = {}) {
     if (_.isString(opts.html)) {
       logger.info('Set HTML ..');
       await page.setContent(opts.html, opts.goto);
+      // custom font kalpurush
+  const fontUrl = 'https://github.com/hmoazzem/bangla-fonts/raw/master/kalpurush.ttf';
+  await page.addStyleTag({
+    content: `@font-face {
+      font-family: 'kalpurush';
+      src: url('${fontUrl}') format('truetype');
+    }`
+  });
     } else {
       logger.info(`Goto url ${opts.url} ..`);
       await page.goto(opts.url, opts.goto);
